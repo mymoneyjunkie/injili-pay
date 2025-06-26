@@ -1,0 +1,970 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button svg {
+  margin-left: 10px;
+}
+
+tbody tr td svg {
+  margin-right: 10px;
+}
+
+@theme {
+  --breakpoint-xs: 20rem;
+  --breakpoint-xd: 23rem;
+  --breakpoint-xm: 26rem;
+  
+  /* PREMIUM PURPLE THEME - Improved Readability */
+  --color-primary-50: #f3e8ff;
+  --color-primary-100: #e9d5ff;
+  --color-primary-200: #d8b4fe;
+  --color-primary-300: #c084fc;
+  --color-primary-400: #a923c5;  /* New purple */
+  --color-primary-500: #a923c5;  /* New purple */
+  --color-primary-600: #a923c5;  /* New purple */
+  --color-primary-700: #6b21a8;
+  --color-primary-800: #581c87;
+  --color-primary-900: #4a1259;
+  
+  /* EMERALD TO PREMIUM PURPLE OVERRIDE */
+  --color-emerald-50: #f3e8ff;
+  --color-emerald-100: #e9d5ff;
+  --color-emerald-200: #d8b4fe;
+  --color-emerald-300: #c084fc;
+  --color-emerald-400: #a923c5;  /* New purple */
+  --color-emerald-500: #a923c5;  /* New purple */
+  --color-emerald-600: #a923c5;  /* New purple */
+  --color-emerald-700: #6b21a8;
+  --color-emerald-800: #581c87;
+  --color-emerald-900: #4a1259;
+  
+  /* YELLOW TO PREMIUM PURPLE OVERRIDE */
+  --color-yellow-50: #f3e8ff;
+  --color-yellow-100: #e9d5ff;
+  --color-yellow-200: #d8b4fe;
+  --color-yellow-300: #c084fc;
+  --color-yellow-400: #a923c5;  /* New purple */
+  --color-yellow-500: #a923c5;  /* New purple */
+  --color-yellow-600: #a923c5;  /* New purple */
+  --color-yellow-700: #6b21a8;
+  --color-yellow-800: #581c87;
+  --color-yellow-900: #4a1259;
+}
+
+:root {
+  /* Base font settings */
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* PREMIUM PURPLE & BLACK THEME COLORS */
+  --color-primary: #a923c5;  /* New purple */
+  --color-primary-dark: #a923c5;  /* New purple */
+  --color-primary-light: #a923c5;  /* New purple */
+  --color-secondary: #000000;
+  
+  /* Background colors */
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #0a0a0a;
+  --color-bg-tertiary: #141414;
+  --color-bg-card: #1a1a1a;
+  --color-bg-hover: #262626;
+  
+  /* Text colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a923c5;  /* New purple */
+  --color-text-muted: #a1a1aa;
+  --color-text-accent: #10cddb;  /* New turquoise */
+  
+  /* Border colors */
+  --color-border-primary: #a923c5;  /* New purple */
+  --color-border-secondary: #a923c5;  /* New purple */
+  --color-border-muted: #3f3f46;
+
+  /* Apply base styling */
+  color-scheme: dark;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* EXCLUDE 3D MODEL CONTAINER FROM PURPLE THEME */
+/* Preserve original background behind Spline 3D model */
+*[class*="spline"], 
+canvas, 
+iframe[src*="spline"],
+.spline-container,
+.spline-wrapper,
+*[class*="from-emerald-900"][class*="via-blue-900"][class*="to-purple-900"] {
+  /* Make 3D model background completely transparent */
+  background: transparent !important;
+}
+
+/* Specific 3D model background exclusion - MAKE TRANSPARENT */
+.bg-gradient-to-r.from-emerald-900\/20.via-blue-900\/20.to-purple-900\/20 {
+  background: transparent !important;
+  opacity: 0 !important;
+}
+
+/* 3D model loading animation exclusion - MAKE TRANSPARENT */
+.bg-emerald-700\/20 {
+  background: transparent !important;
+}
+
+/* FORCE TRANSPARENT BACKGROUND FOR 3D MODEL GLOW EFFECT */
+/* Target the exact background div behind Spline model */
+div.absolute.inset-0[class*="bg-gradient-to-r"][class*="from-emerald-900"][class*="via-blue-900"][class*="to-purple-900"],
+.absolute.inset-0.bg-gradient-to-r.from-emerald-900\/20.via-blue-900\/20.to-purple-900\/20,
+*[class*="bg-gradient-to-r"][class*="from-emerald-900\/20"][class*="via-blue-900\/20"][class*="to-purple-900\/20"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  opacity: 0 !important;
+  display: none !important;
+}
+
+/* ULTRA AGGRESSIVE EMERALD TO LIGHT PINK CONVERSION - HIGHEST PRIORITY */
+/* CATCH ALL EMERALD CLASSES WITH WILDCARD SELECTORS */
+
+/* ALL EMERALD BACKGROUNDS */
+[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]):not(.bg-emerald-700\/20),
+.bg-emerald-50, .bg-emerald-100, .bg-emerald-200, .bg-emerald-300,
+.bg-emerald-400, .bg-emerald-500, .bg-emerald-600,
+.bg-emerald-800, .bg-emerald-950 {
+  background-color: #a923c5 !important;
+}
+
+/* SPECIFIC EMERALD BACKGROUND SHADES - LIGHTER */
+.bg-emerald-400 {
+  background-color: #a855f7 !important;
+}
+
+.bg-emerald-500 {
+  background-color: #a923c5 !important;
+}
+
+.bg-emerald-600 {
+  background-color: #7e22ce !important;
+}
+
+.bg-emerald-800 {
+  background-color: #581c87 !important;
+}
+
+/* PRESERVE ORIGINAL EMERALD COLORS FOR 3D MODEL ELEMENTS */
+.bg-emerald-700 {
+  background-color: #15803d !important; /* Original emerald-700 */
+}
+
+.bg-emerald-900 {
+  background-color: #064e3b !important; /* Original emerald-900 */
+}
+
+/* ALL EMERALD HOVER BACKGROUNDS - EXCLUDE 3D MODEL ELEMENTS */
+[class*="hover:bg-emerald"]:hover:not([class*="emerald-700"]):not([class*="emerald-900"]),
+.hover\:bg-emerald-50:hover, .hover\:bg-emerald-100:hover, .hover\:bg-emerald-200:hover,
+.hover\:bg-emerald-300:hover, .hover\:bg-emerald-400:hover, .hover\:bg-emerald-500:hover,
+.hover\:bg-emerald-600:hover, .hover\:bg-emerald-800:hover, .hover\:bg-emerald-950:hover {
+  background-color: #7e22ce !important;
+}
+
+/* ALL EMERALD BACKGROUNDS WITH OPACITY - EXCLUDE 3D MODEL */
+[class*="bg-emerald"][class*="/"]:not(.bg-emerald-700\/20):not([class*="emerald-900"]),
+.bg-emerald-50\/5, .bg-emerald-50\/10, .bg-emerald-50\/20, .bg-emerald-50\/25,
+.bg-emerald-50\/30, .bg-emerald-50\/40, .bg-emerald-50\/50, .bg-emerald-50\/60,
+.bg-emerald-50\/70, .bg-emerald-50\/75, .bg-emerald-50\/80, .bg-emerald-50\/90,
+.bg-emerald-50\/95,
+.bg-emerald-100\/5, .bg-emerald-100\/10, .bg-emerald-100\/20, .bg-emerald-100\/25,
+.bg-emerald-100\/30, .bg-emerald-100\/40, .bg-emerald-100\/50, .bg-emerald-100\/60,
+.bg-emerald-100\/70, .bg-emerald-100\/75, .bg-emerald-100\/80, .bg-emerald-100\/90,
+.bg-emerald-100\/95,
+.bg-emerald-200\/5, .bg-emerald-200\/10, .bg-emerald-200\/20, .bg-emerald-200\/25,
+.bg-emerald-200\/30, .bg-emerald-200\/40, .bg-emerald-200\/50, .bg-emerald-200\/60,
+.bg-emerald-200\/70, .bg-emerald-200\/75, .bg-emerald-200\/80, .bg-emerald-200\/90,
+.bg-emerald-200\/95,
+.bg-emerald-300\/5, .bg-emerald-300\/10, .bg-emerald-300\/20, .bg-emerald-300\/25,
+.bg-emerald-300\/30, .bg-emerald-300\/40, .bg-emerald-300\/50, .bg-emerald-300\/60,
+.bg-emerald-300\/70, .bg-emerald-300\/75, .bg-emerald-300\/80, .bg-emerald-300\/90,
+.bg-emerald-300\/95,
+.bg-emerald-400\/5, .bg-emerald-400\/10, .bg-emerald-400\/20, .bg-emerald-400\/25,
+.bg-emerald-400\/30, .bg-emerald-400\/40, .bg-emerald-400\/50, .bg-emerald-400\/60,
+.bg-emerald-400\/70, .bg-emerald-400\/75, .bg-emerald-400\/80, .bg-emerald-400\/90,
+.bg-emerald-400\/95,
+.bg-emerald-500\/5, .bg-emerald-500\/10, .bg-emerald-500\/20, .bg-emerald-500\/25,
+.bg-emerald-500\/30, .bg-emerald-500\/40, .bg-emerald-500\/50, .bg-emerald-500\/60,
+.bg-emerald-500\/70, .bg-emerald-500\/75, .bg-emerald-500\/80, .bg-emerald-500\/90,
+.bg-emerald-500\/95,
+.bg-emerald-600\/5, .bg-emerald-600\/10, .bg-emerald-600\/25,
+.bg-emerald-600\/30, .bg-emerald-600\/40, .bg-emerald-600\/50, .bg-emerald-600\/60,
+.bg-emerald-600\/70, .bg-emerald-600\/75, .bg-emerald-600\/80, .bg-emerald-600\/90,
+.bg-emerald-600\/95,
+.bg-emerald-800\/5, .bg-emerald-800\/10, .bg-emerald-800\/20, .bg-emerald-800\/25,
+.bg-emerald-800\/30, .bg-emerald-800\/40, .bg-emerald-800\/50, .bg-emerald-800\/60,
+.bg-emerald-800\/70, .bg-emerald-800\/75, .bg-emerald-800\/80, .bg-emerald-800\/90,
+.bg-emerald-800\/95,
+.bg-emerald-950\/5, .bg-emerald-950\/10, .bg-emerald-950\/20, .bg-emerald-950\/25,
+.bg-emerald-950\/30, .bg-emerald-950\/40, .bg-emerald-950\/50, .bg-emerald-950\/60,
+.bg-emerald-950\/70, .bg-emerald-950\/75, .bg-emerald-950\/80, .bg-emerald-950\/90,
+.bg-emerald-950\/95 {
+  background-color: rgba(169, 35, 197, 0.6) !important;
+}
+
+/* KEEP ORIGINAL COLORS FOR PRICING CARDS ONLY */
+.bg-emerald-600\/20:not(.bg-emerald-700\/20) {
+  background-color: rgba(169, 35, 197, 0.25) !important;
+}
+
+/* ALL EMERALD TEXT COLORS */
+[class*="text-emerald"],
+.text-emerald-50, .text-emerald-100, .text-emerald-200, .text-emerald-300,
+.text-emerald-400, .text-emerald-500, .text-emerald-600, .text-emerald-700,
+.text-emerald-800, .text-emerald-900, .text-emerald-950 {
+  color: #a923c5 !important;
+}
+
+/* SPECIFIC YENUMAX LOGO TEXT COLOR */
+.text-emerald-50 {
+  color: #a923c5 !important;
+}
+
+/* YENUMAX BRAND LOGO - ULTRA SPECIFIC */
+*:contains("YENUMAX"),
+[class*="font-bold"][class*="text-emerald"],
+.font-bold.text-emerald-50,
+div.text-emerald-50.font-bold,
+nav .text-emerald-50.font-bold,
+header .text-emerald-50.font-bold,
+footer .text-emerald-50.font-bold {
+  color: #a923c5 !important;
+}
+
+/* ALL EMERALD HOVER TEXT COLORS */
+[class*="hover:text-emerald"]:hover,
+.hover\:text-emerald-50:hover, .hover\:text-emerald-100:hover, .hover\:text-emerald-200:hover,
+.hover\:text-emerald-300:hover, .hover\:text-emerald-400:hover, .hover\:text-emerald-500:hover,
+.hover\:text-emerald-600:hover, .hover\:text-emerald-700:hover, .hover\:text-emerald-800:hover,
+.hover\:text-emerald-900:hover, .hover\:text-emerald-950:hover {
+  color: #a855f7 !important;
+}
+
+/* ALL EMERALD BORDER COLORS */
+[class*="border-emerald"],
+.border-emerald-50, .border-emerald-100, .border-emerald-200, .border-emerald-300,
+.border-emerald-400, .border-emerald-500, .border-emerald-600, .border-emerald-700,
+.border-emerald-800, .border-emerald-900, .border-emerald-950 {
+  border-color: #a923c5 !important;
+}
+
+/* ALL EMERALD BORDER COLORS WITH OPACITY */
+[class*="border-emerald"][class*="/"],
+.border-emerald-500\/20, .border-emerald-600\/20, .border-emerald-700\/20,
+.border-emerald-800\/20, .border-emerald-800\/30, .border-emerald-900\/20 {
+  border-color: rgba(169, 35, 197, 0.4) !important;
+}
+
+/* ALL EMERALD FOCUS BORDER COLORS */
+[class*="focus:border-emerald"]:focus,
+.focus\:border-emerald-500:focus, .focus\:border-emerald-600:focus,
+.focus\:border-emerald-700:focus {
+  border-color: #a923c5 !important;
+}
+
+/* ALL EMERALD FOCUS-WITHIN BORDER COLORS */
+[class*="focus-within:border-emerald"]:focus-within,
+.focus-within\:border-emerald-500:focus-within, .focus-within\:border-emerald-600:focus-within {
+  border-color: #a923c5 !important;
+}
+
+/* ALL EMERALD GRADIENTS - EXCLUDE 3D MODEL GRADIENTS */
+[class*="from-emerald"]:not([class*="emerald-900"]),
+[class*="to-emerald"]:not([class*="purple-900"]),
+[class*="via-emerald"]:not([class*="blue-900"]),
+.from-emerald-400, .from-emerald-500, .from-emerald-600, .from-emerald-800,
+.to-emerald-400, .to-emerald-500, .to-emerald-600, .to-emerald-800,
+.via-emerald-400, .via-emerald-500, .via-emerald-600, .via-emerald-800 {
+  --tw-gradient-from: #a923c5 !important;
+  --tw-gradient-to: #7e22ce !important;
+  --tw-gradient-via: #a923c5 !important;
+}
+
+/* ULTRA SPECIFIC PRICING CARD GRADIENTS - EXACT MATCHES FROM CODE */
+.bg-gradient-to-r.from-emerald-800.via-emerald-700.to-emerald-600,
+.bg-gradient-to-r.from-emerald-600.to-emerald-800:not([class*="emerald-900"]),
+.bg-gradient-to-br.from-emerald-600.to-emerald-800:not([class*="emerald-900"]),
+.bg-gradient-to-l.from-emerald-600.to-emerald-800:not([class*="emerald-900"]),
+.bg-gradient-to-t.from-emerald-600.to-emerald-800:not([class*="emerald-900"]),
+.bg-gradient-to-b.from-emerald-600.to-emerald-800:not([class*="emerald-900"]),
+.bg-gradient-to-tr.from-emerald-600.to-emerald-800:not([class*="emerald-900"]),
+.bg-gradient-to-tl.from-emerald-600.to-emerald-800:not([class*="emerald-900"]),
+.bg-gradient-to-bl.from-emerald-600.to-emerald-800:not([class*="emerald-900"]) {
+  background: linear-gradient(135deg, #a923c5, #a855f7, #7e22ce) !important;
+}
+
+/* FORCE OVERRIDE ALL GRADIENTS WITH EMERALD - EXCLUDE 3D MODEL */
+[class*="bg-gradient"][class*="emerald"]:not([class*="emerald-900"]):not([class*="blue-900"]):not([class*="purple-900"]) {
+  background: linear-gradient(135deg, #a923c5, #7e22ce) !important;
+}
+
+/* PRICING CARD ACTIVE STATE BORDER */
+.border-emerald-500 {
+  border-color: #a923c5 !important;
+}
+
+/* PRICING CARD SHADOW */
+.shadow-emerald-500\/20 {
+  box-shadow: 0 10px 15px -3px rgba(169, 35, 197, 0.3), 0 4px 6px -2px rgba(169, 35, 197, 0.1) !important;
+}
+
+/* PRICING CARD POPULAR BADGE */
+.bg-emerald-600:not(.bg-emerald-700\/20) {
+  background-color: #a923c5 !important;
+}
+
+/* ALL EMERALD SHADOWS */
+[class*="shadow-emerald"],
+.shadow-emerald-500\/20, .shadow-emerald-600\/20, .shadow-emerald-700\/20,
+.shadow-emerald-500\/25, .shadow-emerald-600\/25, .shadow-emerald-700\/25,
+.shadow-emerald-500\/30, .shadow-emerald-600\/30, .shadow-emerald-700\/30 {
+  box-shadow: 0 10px 15px -3px rgba(169, 35, 197, 0.3), 0 4px 6px -2px rgba(169, 35, 197, 0.1) !important;
+}
+
+/* ALL EMERALD ACCENT COLORS */
+[class*="accent-emerald"],
+.accent-emerald-500, .accent-emerald-600 {
+  accent-color: #a923c5 !important;
+}
+
+/* ALL EMERALD RING COLORS */
+[class*="ring-emerald"],
+.ring-emerald-500, .ring-emerald-600 {
+  --tw-ring-color: #a923c5 !important;
+}
+
+/* ALL EMERALD OUTLINE COLORS */
+[class*="outline-emerald"],
+.outline-emerald-500, .outline-emerald-600 {
+  outline-color: #a923c5 !important;
+}
+
+/* ALL EMERALD DECORATION COLORS */
+[class*="decoration-emerald"],
+.decoration-emerald-500, .decoration-emerald-600 {
+  text-decoration-color: #a923c5 !important;
+}
+
+/* ALL EMERALD DIVIDE COLORS */
+[class*="divide-emerald"],
+.divide-emerald-500, .divide-emerald-600 {
+  border-color: #a923c5 !important;
+}
+
+/* FORM INPUT OVERRIDES */
+input:focus {
+  border-color: #a923c5 !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #a923c5 !important;
+  --tw-ring-color: rgba(169, 35, 197, 0.3) !important;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* FAQ animations */
+@keyframes accordionIn {
+  0% {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    max-height: 1000px;
+    transform: translateY(0);
+  }
+}
+
+.faq-content-enter {
+  animation: accordionIn 0.3s ease forwards;
+  overflow: hidden;
+  will-change: max-height, opacity, transform;
+}
+
+/* Responsive fixes */
+html, body {
+  overflow-x: hidden;
+  background-color: #000000;
+}
+
+@media (max-width: 640px) {
+  h1, h2 {
+    word-break: break-word;
+  }
+}
+
+/* FOOTER STYLING */
+footer {
+  background: linear-gradient(135deg, rgba(190, 24, 93, 0.08), rgba(157, 23, 77, 0.12)) !important;
+  backdrop-filter: blur(12px) !important;
+  border-top: 2px solid rgba(190, 24, 93, 0.3) !important;
+  color: #ffffff;
+  box-shadow: 0 -4px 20px rgba(190, 24, 93, 0.1) !important;
+}
+
+/* FOOTER CONSISTENT BACKGROUND FOR ALL INSTANCES */
+.bg-black\/60.backdrop-blur-sm,
+div[class*="border-t"][class*="border-gray-800"][class*="bg-black"] {
+  background: linear-gradient(135deg, rgba(190, 24, 93, 0.08), rgba(157, 23, 77, 0.12)) !important;
+  backdrop-filter: blur(12px) !important;
+  border-top: 2px solid rgba(190, 24, 93, 0.3) !important;
+}
+
+/* FOOTER BORDER CONSISTENCY */
+.border-t.border-gray-800 {
+  border-top: 2px solid rgba(190, 24, 93, 0.3) !important;
+}
+
+/* REMOVE DISCONTINUOUS BORDERS */
+.border-gray-800 {
+  border-color: rgba(190, 24, 93, 0.3) !important;
+}
+
+footer .text-emerald-50 {
+  color: #a923c5 !important;
+}
+
+footer h5 {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+footer p {
+  color: #d1d5db !important;
+}
+
+footer a {
+  color: #d1d5db !important;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #a923c5 !important;
+}
+
+footer ul li {
+  margin: 0.5rem 0;
+}
+
+footer .hover\:text-emerald-500:hover {
+  color: #a923c5 !important;
+}
+
+/* YENUMAX LOGO IN FOOTER */
+footer .text-emerald-50.font-bold,
+footer [class*="text-emerald-50"] {
+  color: #a923c5 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* FOOTER LINKS PURPLE THEME */
+footer .hover\:text-emerald-500:hover,
+footer a:hover {
+  color: #a855f7 !important;
+}
+
+/* FOOTER GRID CONTENT */
+footer .text-gray-400,
+footer .text-gray-500 {
+  color: #d1d5db !important;
+}
+
+/* ENSURE SMOOTH TRANSITIONS */
+footer * {
+  transition: all 0.3s ease !important;
+}
+
+/* ESSENTIAL BOX SIZING */
+* {
+  box-sizing: border-box;
+}
+
+/* SUPER AGGRESSIVE WILDCARD OVERRIDES - MAXIMUM PRIORITY */
+/* These catch any missed emerald classes - EXCLUDE 3D MODEL */
+*[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]):not(.bg-emerald-700\/20) {
+  background-color: #a923c5 !important;
+}
+
+*[class*="text-emerald"] {
+  color: #a923c5 !important;
+}
+
+*[class*="border-emerald"] {
+  border-color: #a923c5 !important;
+}
+
+/* ULTRA SPECIFIC YENUMAX LOGO TARGETING */
+/* Target any element with emerald text that contains YENUMAX */
+nav *[class*="text-emerald"],
+header *[class*="text-emerald"],
+footer *[class*="text-emerald"],
+div[class*="text-emerald"][class*="font-bold"],
+*[class*="text-emerald"]:contains("YENUMAX") {
+  color: #a923c5 !important;
+}
+
+/* Force ANY text-emerald-50 to be purple */
+*[class*="text-emerald-50"],
+*.text-emerald-50,
+[class="text-emerald-50 font-bold text-xl"],
+[class="text-emerald-50 font-bold text-2xl sm:text-3xl md:text-5xl"],
+[class="text-emerald-50 font-bold text-2xl sm:text-3xl"],
+[class="text-emerald-50 font-bold text-xl sm:text-2xl mb-4 md:mb-0"],
+[class*="text-emerald-50"][class*="font-bold"] {
+  color: #a923c5 !important;
+}
+
+/* NUCLEAR OPTION FOR LOGO TEXT */
+/* Target common logo class combinations */
+.font-bold[class*="text-emerald"],
+.text-xl[class*="text-emerald"],
+.text-2xl[class*="text-emerald"],
+.text-3xl[class*="text-emerald"],
+.text-4xl[class*="text-emerald"],
+.text-5xl[class*="text-emerald"] {
+  color: #a923c5 !important;
+}
+
+/* SVG FILL COLORS FOR ICONS */
+svg[class*="text-emerald"] {
+  fill: currentColor !important;
+  color: #a923c5 !important;
+}
+
+/* CHECK MARK ICONS */
+.text-emerald-500 svg,
+.text-emerald-600 svg {
+  color: #a923c5 !important;
+}
+
+/* PRICING CARD SPECIFIC TARGETING - EXCLUDE 3D MODEL */
+div[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]):not(.bg-emerald-700\/20) {
+  background-color: #a923c5 !important;
+}
+
+/* CARD CONTAINER BACKGROUNDS - EXCLUDE 3D MODEL */
+.rounded-2xl[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]),
+.rounded-xl[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]),
+.rounded-lg[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]) {
+  background-color: #a923c5 !important;
+}
+
+/* PRICING CARD HEADERS */
+.text-2xl[class*="text-emerald"],
+.text-xl[class*="text-emerald"],
+.font-bold[class*="text-emerald"] {
+  color: #ffffff !important;
+}
+
+/* NUCLEAR OPTION - FORCE ALL ELEMENTS WITH GRADIENTS - EXCLUDE 3D MODEL */
+*[class*="gradient"][class*="emerald"]:not([class*="emerald-900"]):not([class*="blue-900"]):not([class*="purple-900"]) {
+  background: linear-gradient(135deg, #a923c5, #7e22ce) !important;
+}
+
+/* ULTIMATE FALLBACK - TARGET ANY ELEMENT WITH MULTIPLE EMERALD CLASSES - EXCLUDE 3D MODEL */
+*[class*="from-emerald"][class*="via-emerald"][class*="to-emerald"]:not([class*="emerald-900"]):not([class*="blue-900"]):not([class*="purple-900"]) {
+  background: linear-gradient(135deg, #a923c5, #a855f7, #7e22ce) !important;
+}
+
+/* IMPROVE TEXT CONTRAST ON PURPLE BACKGROUNDS */
+/* PRICING CARDS - KEEP TEXT WHITE FOR VISIBILITY */
+.bg-emerald-600 .text-white,
+.bg-emerald-500 .text-white,
+.bg-emerald-400 .text-white,
+*[class*="bg-emerald"] .text-white,
+*[class*="bg-emerald"] h1,
+*[class*="bg-emerald"] h2,
+*[class*="bg-emerald"] h3,
+*[class*="bg-emerald"] h4,
+*[class*="bg-emerald"] h5,
+*[class*="bg-emerald"] h6,
+*[class*="bg-emerald"] p,
+*[class*="bg-emerald"] span {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* ENSURE ALL PRICING CARD TEXT IS WHITE AND VISIBLE */
+div[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]) *,
+div[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]) .text-white,
+div[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]) .font-medium,
+div[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]) .font-bold,
+div[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]) p,
+div[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]) span,
+div[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]) h1,
+div[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]) h2,
+div[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]) h3,
+div[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]) h4,
+div[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]) h5,
+div[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]) h6 {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* PRICING CARD SPECIFIC TEXT ELEMENTS */
+div[class*="bg-emerald"] .text-white\/90 {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+div[class*="bg-emerald"] .text-gray-400,
+div[class*="bg-emerald"] .text-gray-500 {
+  color: rgba(255, 255, 255, 0.7) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* PRICING CARD PRICE TEXT */
+div[class*="bg-emerald"] .text-emerald-400 {
+  color: #ffffff !important;
+  font-weight: bold !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* ENSURE PRICING CARD NUMBERS AND CURRENCY ARE VISIBLE */
+div[class*="bg-emerald"] .text-xs,
+div[class*="bg-emerald"] .text-sm,
+div[class*="bg-emerald"] .text-base,
+div[class*="bg-emerald"] .text-lg,
+div[class*="bg-emerald"] .text-xl,
+div[class*="bg-emerald"] .text-2xl {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* STATUS BADGES AND LABELS - ENSURE VISIBILITY */
+/* Target emerald status badges like "Active" and "Succeeded" */
+.bg-emerald-600\/20.text-emerald-400,
+.bg-emerald-500\/20.text-emerald-400,
+*[class*="bg-emerald"][class*="text-emerald"],
+span[class*="bg-emerald"][class*="text-emerald"],
+.text-emerald-400 {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* STATUS BADGES WITH ICONS */
+span[class*="bg-emerald"][class*="text-emerald"] svg {
+  color: #ffffff !important;
+}
+
+/* BILLING PAGE STATUS BADGES */
+.inline-flex.items-center[class*="bg-emerald"][class*="text-emerald"] {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* SUBSCRIPTION STATUS BADGE SPECIFIC */
+.rounded-full[class*="bg-emerald"][class*="text-emerald"] {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* MAXIMUM SPECIFICITY TARGETING FOR NAVIGATION */
+/* Target the exact navigation structure */
+nav .text-emerald-50.font-bold.text-xl.sm\:text-2xl.md\:text-4xl,
+nav .text-emerald-50.font-bold,
+nav [class*="text-emerald-50"],
+nav [class*="text-emerald"],
+nav.w-full.fixed.top-0.left-0.z-50 *[class*="text-emerald"],
+.w-full.fixed.top-0.left-0.z-50 *[class*="text-emerald"] {
+  color: #a923c5 !important;
+}
+
+/* TARGET ALL POSSIBLE NAVIGATION CONTAINERS */
+nav *,
+header *,
+[role="navigation"] *,
+.navbar *,
+.nav *,
+.navigation * {
+  /* Only target if they have emerald classes */
+}
+
+nav *[class*="text-emerald"],
+header *[class*="text-emerald"],
+[role="navigation"] *[class*="text-emerald"],
+.navbar *[class*="text-emerald"],
+.nav *[class*="text-emerald"],
+.navigation *[class*="text-emerald"] {
+  color: #a923c5 !important;
+}
+
+/* FORCE ALL LINK ELEMENTS WITH EMERALD CLASSES */
+a[class*="text-emerald"],
+Link[class*="text-emerald"],
+button[class*="text-emerald"] {
+  color: #a923c5 !important;
+}
+
+/* BRUTE FORCE - TARGET ANY ELEMENT WITH EMERALD TEXT IN NAVIGATION CONTEXT */
+body nav *[class*="text-emerald"],
+body header *[class*="text-emerald"],
+body .fixed.top-0 *[class*="text-emerald"],
+body .z-50 *[class*="text-emerald"],
+html nav *[class*="text-emerald"],
+html header *[class*="text-emerald"] {
+  color: #a923c5 !important;
+}
+
+/* EMERGENCY OVERRIDE - HIGHEST POSSIBLE SPECIFICITY */
+html body nav .text-emerald-50.font-bold,
+html body header .text-emerald-50.font-bold,
+html body .w-full.fixed.top-0 .text-emerald-50.font-bold,
+html body nav *[class*="text-emerald-50"],
+html body header *[class*="text-emerald-50"],
+html body .fixed *[class*="text-emerald-50"] {
+  color: #a923c5 !important;
+  text-decoration: none !important;
+}
+
+/* ULTIMATE FALLBACK - ELEMENT TYPE + CLASS TARGETING */
+div.text-emerald-50,
+span.text-emerald-50,
+p.text-emerald-50,
+h1.text-emerald-50,
+h2.text-emerald-50,
+h3.text-emerald-50,
+h4.text-emerald-50,
+h5.text-emerald-50,
+h6.text-emerald-50,
+a.text-emerald-50,
+Link.text-emerald-50 {
+  color: #a923c5 !important;
+}
+
+/* BEAUTIFUL PURPLE PRICING CARDS PALETTE */
+/* Create cohesive purple theme for all pricing cards */
+
+/* ALL PRICING CARDS - CONSISTENT PURPLE THEME */
+/* Make all cards use purple gradient regardless of active state */
+.bg-black\/60,
+.bg-emerald-600\/20 {
+  background: linear-gradient(135deg, rgba(190, 24, 93, 0.25), rgba(157, 23, 77, 0.35)) !important;
+  border-color: rgba(190, 24, 93, 0.5) !important;
+}
+
+/* PRICING CARD HOVER STATES - ENHANCED PURPLE */
+.bg-black\/60:hover,
+.hover\:border-gray-700:hover,
+.bg-emerald-600\/20:hover {
+  background: linear-gradient(135deg, rgba(190, 24, 93, 0.35), rgba(157, 23, 77, 0.45)) !important;
+  border-color: rgba(190, 24, 93, 0.7) !important;
+}
+
+/* REMOVE BLACK SECTIONS - MAKE ALL PURPLE */
+/* Force all card sections to be purple */
+div[class*="rounded-xl"][class*="bg-black"],
+div[class*="rounded-xl"][class*="bg-emerald"] {
+  background: linear-gradient(135deg, rgba(190, 24, 93, 0.25), rgba(157, 23, 77, 0.35)) !important;
+  border-color: rgba(190, 24, 93, 0.5) !important;
+}
+
+/* ACTIVE CARD HIGHLIGHTING - BRIGHTER PURPLE */
+.border-emerald-500,
+.shadow-emerald-500\/20 {
+  border-color: #e4a853 !important;
+  box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.4), 0 4px 6px -2px rgba(236, 72, 153, 0.2) !important;
+}
+
+/* PRICING CARD HEADERS - BEAUTIFUL PURPLE GRADIENTS */
+.bg-gradient-to-r.from-emerald-800.via-emerald-700.to-emerald-600 {
+  background: linear-gradient(135deg, #7e22ce, #e4a853, #6b21a8) !important;
+}
+
+/* PRICING CARD DIVIDERS */
+.divide-gray-700 > *:not(:last-child) {
+  border-color: rgba(157, 23, 77, 0.6) !important;
+  border-width: 1px !important;
+}
+
+/* ENHANCED DIVIDER VISIBILITY */
+.divide-y > *:not(:last-child),
+*[class*="divide-gray"] > *:not(:last-child) {
+  border-bottom-color: rgba(157, 23, 77, 0.7) !important;
+  border-bottom-width: 1px !important;
+}
+
+/* PRICING CARD SECTION BORDERS */
+div[class*="bg-emerald"] .divide-y > *:not(:last-child),
+div[class*="bg-black"] .divide-y > *:not(:last-child) {
+  border-bottom-color: rgba(112, 26, 117, 0.8) !important;
+  border-bottom-width: 2px !important;
+}
+
+/* MAKE SURE ALL CARD DIVIDERS ARE VISIBLE */
+.rounded-xl .divide-y > *:not(:last-child),
+.rounded-lg .divide-y > *:not(:last-child) {
+  border-bottom: 2px solid rgba(112, 26, 117, 0.7) !important;
+}
+
+/* CARD SECTION SEPARATORS */
+/*.p-6 + .p-6,
+[class*="p-6"]:not(:first-child) {
+  border-top: 1px solid rgba(112, 26, 117, 0.6) !important;
+}*/
+
+/* GRAY BORDERS TO PURPLE */
+.border-gray-800 {
+  border-color: rgba(190, 24, 93, 0.3) !important;
+}
+
+.border-gray-700 {
+  border-color: rgba(190, 24, 93, 0.4) !important;
+}
+
+/* MOBILE CARD BACKGROUNDS */
+.bg-gray-800\/80,
+.bg-gray-700\/80 {
+  background: linear-gradient(135deg, rgba(190, 24, 93, 0.2), rgba(157, 23, 77, 0.25)) !important;
+}
+
+.hover\:bg-gray-700\/80:hover {
+  background: linear-gradient(135deg, rgba(190, 24, 93, 0.3), rgba(157, 23, 77, 0.35)) !important;
+}
+
+/* PRICING DETAIL SECTIONS */
+.bg-black\/60.backdrop-blur-sm {
+  background: linear-gradient(135deg, rgba(190, 24, 93, 0.12), rgba(157, 23, 77, 0.18)) !important;
+  border-color: rgba(190, 24, 93, 0.25) !important;
+}
+
+/* FEATURES SECTION BACKGROUND */
+.from-black\/80.to-emerald-900\/20 {
+  background: linear-gradient(135deg, rgba(190, 24, 93, 0.1), rgba(236, 72, 153, 0.15)) !important;
+}
+
+/* SUBSCRIPTION STATUS BADGE ADJUSTMENTS */
+.bg-red-600\/20 {
+  background-color: rgba(239, 68, 68, 0.2) !important;
+}
+
+.bg-yellow-600\/20 {
+  background-color: rgba(245, 158, 11, 0.2) !important;
+}
+
+/* FORCE PURPLE THEME FOR ALL GREEN/EMERALD PRICING CARD ELEMENTS */
+/* Convert all emerald/green backgrounds to purple */
+.bg-emerald-600\/20,
+.bg-emerald-500\/20,
+.bg-emerald-400\/20,
+*[class*="bg-emerald"],
+div[class*="bg-emerald"] {
+  background: linear-gradient(135deg, #7e22ce, #e4a853) !important;
+}
+
+/* Convert emerald borders to purple */
+.border-emerald-500,
+.border-emerald-600,
+.border-emerald-400,
+*[class*="border-emerald"] {
+  border-color: #e4a853 !important;
+}
+
+/* Convert emerald text colors to purple */
+.text-emerald-400,
+.text-emerald-500,
+.text-emerald-600,
+*[class*="text-emerald"] {
+  color: #f472b6 !important;
+}
+
+/* Pricing card active states */
+.shadow-emerald-500\/20,
+*[class*="shadow-emerald"] {
+  box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.3), 0 4px 6px -2px rgba(236, 72, 153, 0.1) !important;
+}
+
+/* Gold gradient headers for pricing cards */
+.bg-gradient-to-r.from-emerald-800.via-emerald-700.to-emerald-600,
+*[class*="from-emerald"][class*="via-emerald"][class*="to-emerald"] {
+  background: linear-gradient(135deg, #7e22ce, #e4a853, #f472b6) !important;
+}
+
+/* Popular badge in purple */
+.bg-emerald-600 {
+  background-color: #7e22ce !important;
+}
+
+/* Checkmark icon in pricing cards */
+.bg-emerald-500 {
+  background-color: #e4a853 !important;
+}
+
+/* Hover states for purple theme */
+.hover\:bg-emerald-700:hover,
+.hover\:bg-emerald-600:hover {
+  background-color: #6b21a8 !important;
+}
+
+/* Make sure pricing text is visible on purple backgrounds */
+*[class*="bg-emerald"] .text-white,
+*[class*="bg-emerald"] .text-white\/90,
+*[class*="bg-emerald"] .font-medium,
+*[class*="bg-emerald"] .font-bold {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* HIDE 3D MODEL LOADING ANIMATION CIRCLE */
+/* Remove the loading pulse animation that creates the purpleen circle */
+.animate-pulse .rounded-full.bg-emerald-700\/20,
+div[class*="rounded-full"][class*="bg-emerald-700"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* HIDE ENTIRE LOADING ANIMATION CONTAINER */
+.absolute.inset-0.flex.items-center.justify-center.z-0 .animate-pulse {
+  display: none !important;
+}
+
+/* ALTERNATIVELY, MAKE LOADING ELEMENTS COMPLETELY TRANSPARENT */
+.animate-pulse .rounded-full,
+.animate-pulse div[class*="bg-emerald"] {
+  background: transparent !important;
+  border: none !important;
+  opacity: 0 !important;
+}

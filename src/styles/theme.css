@@ -1,0 +1,294 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary colors */
+  --cyan-primary: #10cddb;
+  --cyan-bright: #10cddb;
+  --purple-primary: rgba(137, 38, 167, 0.7);  /* Keep for text and accents */
+  --purple-bright: rgba(153, 50, 204, 0.8);   /* Keep for text and accents */
+  --deep-purple: rgba(74, 18, 89, 0.6);
+  --deep-purple-hover: rgba(92, 22, 112, 0.7);
+  --gold-primary: #d4af37;
+  --gold-secondary: #d4af37;
+  --gray-primary: #919191;
+  --gray-secondary: #959493;
+  --beige-light: #dddabe;
+  
+  /* Background colors */
+  --bg-dark: #000000;
+  --bg-dark-lighter: #0a0a0a;
+  
+  /* Text colors */
+  --color-text-primary: var(--color-silver);
+  --color-text-secondary: var(--color-purple);
+  --color-text-accent: var(--color-cyan);
+
+  /* Gold theme colors */
+  --color-gold-light: #d4af37;
+  --color-gold-dark: #d4af37;
+  
+  /* Keep cyan for buttons */
+  --color-cyan-dark: #10cddb;
+}
+
+/* Override all emerald colors with our new theme */
+[class*="text-emerald"] {
+  color: var(--purple-primary) !important;
+  opacity: 0.8;
+}
+
+/* Override backgrounds to be simple black */
+[class*="bg-emerald"] {
+  background-color: #0a0a0a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient backgrounds */
+[class*="bg-gradient"][class*="emerald"] {
+  background-color: #141414 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hover states */
+[class*="hover:text-emerald"]:hover {
+  color: var(--color-cyan) !important;
+}
+
+[class*="hover:bg-emerald"]:hover {
+  background-color: var(--color-cyan) !important;
+}
+
+/* Border colors */
+[class*="border-emerald"] {
+  border-color: var(--color-purple) !important;
+}
+
+/* Special elements */
+.logo-text {
+  color: var(--color-gold) !important;
+}
+
+/* Africa symbol specific styling */
+.africa-symbol {
+  color: var(--color-gold) !important;
+  fill: var(--color-gold) !important;
+}
+
+/* Button styling - keep the cyan gradient */
+button[class*="bg-emerald"],
+a[class*="bg-emerald"] {
+  background: linear-gradient(135deg, 
+    rgba(16, 205, 219, 0.9), 
+    rgba(0, 206, 209, 0.9)
+  ) !important;
+  color: white !important;
+  transition: all 0.3s ease;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 206, 209, 0.2);
+}
+
+button[class*="bg-emerald"]:hover,
+a[class*="bg-emerald"]:hover {
+  background: linear-gradient(135deg, 
+    rgba(0, 206, 209, 0.95), 
+    rgba(16, 205, 219, 0.95)
+  ) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(0, 206, 209, 0.3);
+}
+
+/* Override any other button styles */
+[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]):not(.bg-emerald-700\/20) {
+  background: linear-gradient(135deg, var(--color-cyan), #00CED1) !important;
+}
+
+[class*="hover:bg-emerald"]:hover:not([class*="emerald-700"]):not([class*="emerald-900"]) {
+  background: linear-gradient(135deg, #00CED1, var(--color-cyan)) !important;
+}
+
+/* Card styling */
+.card {
+  background-color: #0a0a0a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+}
+
+/* Navigation styling */
+nav {
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-silver);
+}
+
+/* Footer styling */
+footer {
+  background: linear-gradient(165deg,
+    rgba(10, 10, 10, 0.98),
+    rgba(18, 18, 18, 1)
+  ) !important;
+  border-top: 1px solid var(--deep-purple) !important;
+  box-shadow: 0 2px 8px rgba(74, 18, 89, 0.3);
+}
+
+/* Status indicators */
+.status-badge {
+  background-color: var(--color-purple);
+  color: white;
+}
+
+.status-badge.active {
+  background-color: var(--color-cyan);
+}
+
+/* Form elements */
+input:focus, 
+select:focus, 
+textarea:focus {
+  border-color: var(--deep-purple) !important;
+  box-shadow: 0 0 0 2px rgba(74, 18, 89, 0.2);
+}
+
+/* Links */
+a {
+  color: var(--color-cyan);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-purple);
+}
+
+/* Icons */
+svg[class*="text-emerald"] {
+  color: var(--color-purple) !important;
+}
+
+svg[class*="text-emerald"]:hover {
+  color: var(--color-cyan) !important;
+}
+
+/* Theme-specific styles */
+.theme-light {
+  --bg-primary: var(--bg-dark);
+  --bg-secondary: var(--bg-dark-lighter);
+  --text-primary: #FFFFFF;
+  --text-secondary: var(--gray-primary);
+  --accent-color: var(--purple-primary);
+  --border-color: var(--deep-purple);
+}
+
+.theme-dark {
+  --bg-primary: var(--bg-dark);
+  --bg-secondary: var(--bg-dark-lighter);
+  --text-primary: #FFFFFF;
+  --text-secondary: var(--gray-secondary);
+  --accent-color: var(--purple-bright);
+  --border-color: var(--deep-purple);
+}
+
+/* Common styles */
+body {
+  background: linear-gradient(165deg,
+    var(--bg-dark),
+    var(--bg-dark-lighter)
+  ) !important;
+  color: var(--text-primary);
+}
+
+/* Gradient backgrounds */
+.gradient-bg {
+  background: linear-gradient(165deg,
+    rgba(137, 38, 167, 0.1),
+    rgba(10, 10, 10, 0.95)
+  ) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* Section backgrounds */
+.section:not(.hero-section) {
+  background: linear-gradient(165deg,
+    rgba(137, 38, 167, 0.15),
+    rgba(10, 10, 10, 0.98)
+  ) !important;
+  border-color: var(--deep-purple) !important;
+}
+
+/* Button styles */
+.button {
+  background: linear-gradient(165deg, var(--cyan-primary), var(--cyan-bright));
+  border: 2px solid var(--cyan-bright);
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(20, 189, 201, 0.3);
+}
+
+/* Text accents */
+.accent-text {
+  color: var(--purple-primary);
+  text-shadow: 0 2px 4px rgba(137, 38, 167, 0.2);
+}
+
+/* Hover effects */
+.hover-effect:hover {
+  color: var(--purple-bright);
+  border-color: var(--purple-primary);
+}
+
+/* Status indicators */
+.status {
+  background-color: var(--cyan-primary);
+  box-shadow: 0 0 8px rgba(20, 189, 201, 0.3);
+}
+
+/* Navigation elements */
+.nav-item {
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+  border-color: var(--deep-purple) !important;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  color: var(--purple-primary);
+  border-color: var(--deep-purple-hover) !important;
+}
+
+/* Feature sections and FAQ styling */
+.features-section,
+.tv-section,
+.faq-section {
+  background: linear-gradient(165deg,
+    rgba(137, 38, 167, 0.15),
+    rgba(10, 10, 10, 0.98)
+  ) !important;
+  border-color: rgba(137, 38, 167, 0.2);
+}
+
+/* Card and container styling */
+.feature-card,
+.tv-card,
+.content-card {
+  background: linear-gradient(165deg,
+    rgba(137, 38, 167, 0.1),
+    rgba(10, 10, 10, 0.95)
+  ) !important;
+  border: 1px solid rgba(137, 38, 167, 0.2);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover,
+.tv-card:hover,
+.content-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(137, 38, 167, 0.4);
+  box-shadow: 0 4px 20px rgba(137, 38, 167, 0.2);
+} 

@@ -1,0 +1,631 @@
+@import "tailwindcss";
+
+#root {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button svg {
+  margin-left: 10px;
+}
+
+tbody tr td svg {
+  margin-right: 10px;
+}
+
+/*@theme {
+  --breakpoint-xs: 20rem;
+  --breakpoint-xd: 23rem;
+  --breakpoint-xm: 26rem;
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@theme {
+  --breakpoint-xs: 20rem;
+  --breakpoint-xd: 23rem;
+  --breakpoint-xm: 26rem;
+  
+  /* PREMIUM PURPLE THEME - Luxury Colors */
+  --color-primary-50: #F3E5F5;
+  --color-primary-100: #E1BEE7;
+  --color-primary-200: #CE93D8;
+  --color-primary-300: #BA68C8;
+  --color-primary-400: #AB47BC;
+  --color-primary-500: #9932CC;  /* Main Purple */
+  --color-primary-600: #8E24AA;
+  --color-primary-700: #7B1FA2;
+  --color-primary-800: #6A1B9A;
+  --color-primary-900: #4A148C;
+  --color-primary-950: #3A1078;
+  
+  /* EMERALD TO PREMIUM PURPLE OVERRIDE */
+  --color-emerald-50: #F3E5F5;
+  --color-emerald-100: #E1BEE7;
+  --color-emerald-200: #CE93D8;
+  --color-emerald-300: #BA68C8;
+  --color-emerald-400: #AB47BC;
+  --color-emerald-500: #9932CC;  /* Main Purple */
+  --color-emerald-600: #8E24AA;
+  --color-emerald-700: #7B1FA2;
+  --color-emerald-800: #6A1B9A;
+  --color-emerald-900: #4A148C;
+  --color-emerald-950: #3A1078;
+  
+  /* YELLOW TO PREMIUM PURPLE OVERRIDE */
+  --color-yellow-50: #fef7f7;
+  --color-yellow-100: #fce7f3;
+  --color-yellow-200: #f9a8d4;
+  --color-yellow-300: #f472b6;
+  --color-yellow-400: #ec4899;
+  --color-yellow-500: #8926a7;
+  --color-yellow-600: #be185d;
+  --color-yellow-700: #9d174d;
+  --color-yellow-800: #831843;
+  --color-yellow-900: #701a75;
+  --color-yellow-950: #4a044e;
+}
+
+:root {
+  /* Base font settings */
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* THEME COLORS */
+  --color-primary: rgba(137, 38, 167, 0.7);
+  --color-primary-dark: rgba(126, 34, 206, 0.7);
+  --color-primary-light: rgba(153, 50, 204, 0.8);
+  --color-secondary: #000000;
+  
+  /* Background colors */
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #0a0a0a;
+  --color-bg-tertiary: #141414;
+  --color-bg-card: #1a1a1a;
+  --color-bg-hover: #262626;
+  
+  /* Text colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: rgba(137, 38, 167, 0.85);
+  --color-text-muted: rgba(161, 161, 170, 0.8);
+  --color-text-accent: rgba(153, 50, 204, 0.9);
+  
+  /* Border colors */
+  --color-border-primary: rgba(137, 38, 167, 0.4);
+  --color-border-secondary: rgba(126, 34, 206, 0.4);
+  --color-border-muted: rgba(63, 63, 70, 0.4);
+
+  /* Apply base styling */
+  color-scheme: dark;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Gold theme colors */
+  --color-gold-light: #d4af37;
+  --color-gold: #d4af37;
+  --color-gold-dark: #b8960b;
+  --color-gold-deep: #a0771e;
+
+  /* Update text colors to match logo gold */
+  --logo-gold: #C5A059;  /* Logo's specific gold color */
+  --logo-gold-light: #D4B575;  /* Lighter shade for hover */
+  --logo-gold-dark: #B68F42;   /* Darker shade for contrast */
+
+  /* Color palette variables */
+  --cyan-primary: #14bdc9;
+  --cyan-bright: #35effc;
+  --purple-primary: #8926a7;
+  --purple-bright: #c312dc;
+  --gold-primary: #d4af37;
+  --gold-secondary: #a0771e;
+  --gray-primary: #919191;
+  --gray-secondary: #959493;
+  --beige-light: #dddabe;
+
+  /* Add deep purple variable */
+  --deep-purple: #4A1259;  /* Darker shade of Ijinile purple */
+  --deep-purple-hover: #5C1670;  /* Slightly lighter for hover states */
+}
+
+/* Theme variations */
+.theme-dark {
+  /* Dark theme colors - can be customized */
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #111827;
+}
+
+/* Simple, subtle animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+/* FAQ animations */
+@keyframes accordionIn {
+  0% {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    max-height: 1000px;
+    transform: translateY(0);
+  }
+}
+
+@keyframes accordionOut {
+  0% {
+    opacity: 1;
+    max-height: 1000px;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.faq-content-enter {
+  animation: accordionIn 0.3s ease forwards;
+  overflow: hidden;
+  will-change: max-height, opacity, transform;
+}
+
+/* Responsive viewport fixes */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Ensure proper display on smaller screens */
+@media (max-width: 640px) {
+  h1, h2 {
+    word-break: break-word;
+  }
+  
+  .carousel-track:hover {
+    animation-play-state: running;
+  }
+}
+
+.main_img {
+  width: 190px;
+  height: 70px;
+}
+
+/* EXCLUDE 3D MODEL CONTAINER FROM PURPLE THEME */
+*[class*="spline"], 
+*[class*="spline"] *,
+*[class*="spline"] *[class*="bg-emerald"],
+*[class*="spline"] *[class*="text-emerald"],
+*[class*="spline"] *[class*="border-emerald"] {
+  background-color: transparent !important;
+  color: inherit !important;
+  border-color: inherit !important;
+}
+
+/* ULTRA AGGRESSIVE EMERALD TO LIGHT PURPLE CONVERSION - HIGHEST PRIORITY */
+[class*="bg-emerald"] {
+  background-color: #8926a7 !important;
+}
+
+/* FOOTER LINKS PURPLE THEME */
+footer .hover\:text-emerald-500:hover,
+footer a:hover {
+  color: #a855f7 !important;
+}
+
+/* Force ANY text-emerald-50 to be purple */
+*[class*="text-emerald-50"],
+*.text-emerald-50,
+.text-emerald-50 {
+  color: #8926a7 !important;
+}
+
+/* IMPROVE TEXT CONTRAST ON PURPLE BACKGROUNDS */
+.bg-emerald-600 .text-white,
+.bg-emerald-700 .text-white,
+.bg-emerald-800 .text-white {
+  color: #ffffff !important;
+}
+
+/* BEAUTIFUL PURPLE PRICING CARDS PALETTE */
+/* Create cohesive purple theme for all pricing cards */
+
+/* ALL PRICING CARDS - CONSISTENT PURPLE THEME */
+/* Make all cards use simple dark backgrounds */
+.bg-black\/60,
+.bg-emerald-600\/20 {
+  background-color: #0a0a0a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* CARD HOVER STATES */
+.bg-black\/60:hover,
+.hover\:border-gray-700:hover,
+.hover\:bg-emerald-700:hover {
+  background-color: #141414 !important;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Force all card sections to be dark */
+div[class*="rounded-xl"][class*="bg-black"],
+div[class*="rounded-xl"][class*="bg-emerald"] {
+  background-color: #0a0a0a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ACTIVE CARD HIGHLIGHTING */
+.border-emerald-500,
+.shadow-emerald-500\/20 {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 
+              0 4px 6px -2px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* CARD HEADERS */
+.bg-gradient-to-r.from-emerald-800.via-emerald-700.to-emerald-600 {
+  background-color: #141414 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Button styling - keep the cyan gradient */
+button[class*="bg-emerald"],
+a[class*="bg-emerald"] {
+  background: linear-gradient(165deg, 
+    rgba(16, 205, 219, 0.9), 
+    rgba(0, 206, 209, 0.9)
+  ) !important;
+  border: none !important;
+  transition: all 0.3s ease !important;
+}
+
+button[class*="bg-emerald"]:hover,
+a[class*="bg-emerald"]:hover {
+  background: linear-gradient(165deg, 
+    rgba(0, 206, 209, 0.95), 
+    rgba(16, 205, 219, 0.95)
+  ) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(20, 189, 201, 0.3);
+}
+
+/* Section backgrounds */
+.section:not(.hero-section) {
+  background-color: #0a0a0a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Card backgrounds */
+.card {
+  background-color: #0a0a0a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card:hover {
+  background-color: #141414 !important;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Remove the loading pulse animation that creates the purpleen circle */
+.animate-pulse .rounded-full.bg-emerald-700\/20,
+div[class*="rounded-full"][class*="bg-emerald-700"] {
+  display: none !important;
+}
+
+[class*="border-pink"],
+[class*="text-pink"],
+[class*="bg-pink"] {
+  border-color: #8926a7 !important;
+  color: #8926a7 !important;
+  background-color: #8926a7 !important;
+}
+
+/* Original CSS commented out below */
+/*:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+*/
+
+/* Force all emerald buttons to be cyan */
+button[class*="bg-emerald"],
+a[class*="bg-emerald"],
+[class*="bg-emerald"] {
+  background: linear-gradient(165deg, 
+    rgba(16, 205, 219, 0.9), 
+    rgba(0, 206, 209, 0.9)
+  ) !important;
+  border: none !important;
+  transition: all 0.3s ease !important;
+}
+
+button[class*="bg-emerald"]:hover,
+a[class*="bg-emerald"]:hover,
+[class*="hover:bg-emerald"]:hover {
+  background: linear-gradient(165deg, 
+    rgba(0, 206, 209, 0.95), 
+    rgba(16, 205, 219, 0.95)
+  ) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(20, 189, 201, 0.3);
+}
+
+/* Professional purple gradients for cards and sections */
+[class*="bg-emerald"]:not(button):not(a):not([class*="emerald-900"]):not([class*="emerald-700"]):not(.bg-emerald-700\/20) {
+  background: linear-gradient(165deg, #9932CC, #7B1FA2) !important;
+}
+
+/* Pricing card gradients */
+.bg-gradient-to-r.from-emerald-600.to-emerald-800:not(button):not(a),
+.bg-gradient-to-br.from-emerald-600.to-emerald-800:not(button):not(a),
+.bg-gradient-to-l.from-emerald-600.to-emerald-800:not(button):not(a) {
+  background: linear-gradient(165deg, rgba(153, 50, 204, 0.95), rgba(123, 31, 162, 0.95)) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Card hover effects */
+.hover\:bg-emerald-50:hover:not(button):not(a), 
+.hover\:bg-emerald-100:hover:not(button):not(a), 
+.hover\:bg-emerald-200:hover:not(button):not(a),
+.hover\:bg-emerald-300:hover:not(button):not(a), 
+.hover\:bg-emerald-400:hover:not(button):not(a), 
+.hover\:bg-emerald-800:hover:not(button):not(a),
+.hover\:bg-emerald-900:hover:not(button):not(a), 
+.hover\:bg-emerald-950:hover:not(button):not(a) {
+  background: linear-gradient(165deg, #8E24AA, #6A1B9A) !important;
+  box-shadow: 0 4px 15px rgba(153, 50, 204, 0.15);
+}
+
+/* Transparent overlays */
+.bg-emerald-600\/20,
+.bg-emerald-500\/20 {
+  background: linear-gradient(165deg, 
+    rgba(153, 50, 204, 0.1), 
+    rgba(123, 31, 162, 0.1)
+  ) !important;
+  backdrop-filter: blur(5px);
+}
+
+/* Card backgrounds with subtle gradient */
+.bg-emerald-600:not(button):not(a),
+.bg-emerald-500:not(button):not(a) {
+  background: linear-gradient(165deg, 
+    rgba(153, 50, 204, 0.98), 
+    rgba(123, 31, 162, 0.98)
+  ) !important;
+}
+
+/* Darker sections with professional gradient */
+.bg-emerald-800:not(button):not(a) {
+  background: linear-gradient(165deg, 
+    rgba(142, 36, 170, 0.98), 
+    rgba(106, 27, 154, 0.98)
+  ) !important;
+}
+
+.bg-emerald-900:not(button):not(a) {
+  background: linear-gradient(165deg, 
+    rgba(123, 31, 162, 0.98), 
+    rgba(74, 20, 140, 0.98)
+  ) !important;
+}
+
+/* Shadow effects for depth */
+[class*="shadow-emerald"] {
+  box-shadow: 
+    0 4px 6px -1px rgba(153, 50, 204, 0.1),
+    0 2px 4px -1px rgba(153, 50, 204, 0.06) !important;
+}
+
+/* Professional gradient for special sections */
+[class*="from-emerald"][class*="via-emerald"][class*="to-emerald"]:not([class*="emerald-900"]):not([class*="blue-900"]):not([class*="purple-900"]) {
+  background: linear-gradient(
+    165deg,
+    rgba(153, 50, 204, 0.98),
+    rgba(142, 36, 170, 0.98),
+    rgba(123, 31, 162, 0.98)
+  ) !important;
+}
+
+/* Update header/footer borders */
+header,
+footer,
+.nav-border {
+  border-color: var(--deep-purple) !important;
+  box-shadow: 0 2px 8px rgba(74, 18, 89, 0.3);
+}
+
+/* Update section borders */
+.features-section,
+.tv-section,
+.faq-section {
+  border-top: 1px solid var(--deep-purple) !important;
+  border-bottom: 1px solid var(--deep-purple) !important;
+}
+
+/* Update card borders */
+.feature-card,
+.tv-card,
+.content-card,
+.faq-item {
+  border: 1px solid var(--deep-purple) !important;
+  box-shadow: 0 2px 4px rgba(74, 18, 89, 0.2);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover,
+.tv-card:hover,
+.content-card:hover,
+.faq-item:hover {
+  border-color: var(--deep-purple-hover) !important;
+  box-shadow: 0 4px 12px rgba(74, 18, 89, 0.3);
+}
+
+/* Update form element borders */
+input:not(.hero-input),
+select:not(.hero-select),
+textarea:not(.hero-textarea) {
+  border: 1px solid var(--deep-purple) !important;
+}
+
+input:focus:not(.hero-input),
+select:focus:not(.hero-select),
+textarea:focus:not(.hero-textarea) {
+  border-color: var(--deep-purple-hover) !important;
+  box-shadow: 0 0 0 2px rgba(74, 18, 89, 0.2);
+}
+
+/* Update dividers */
+hr:not(.hero-divider),
+.divider {
+  border-color: var(--deep-purple) !important;
+}
+
+/* Update any remaining borders */
+[class*="border-purple"],
+[class*="border-pink"],
+[class*="border-red"],
+.border-accent {
+  border-color: var(--deep-purple) !important;
+}
+
+/* Button borders (while keeping cyan background) */
+.button:not(.hero-button) {
+  border: 2px solid var(--deep-purple) !important;
+}
+
+/* Navigation and menu borders */
+.nav-item,
+.menu-item {
+  border-color: var(--deep-purple) !important;
+}
+
+.nav-item:hover,
+.menu-item:hover {
+  border-color: var(--deep-purple-hover) !important;
+}
+
+/* Modal and popup borders */
+.modal,
+.popup,
+.dialog {
+  border: 1px solid var(--deep-purple) !important;
+  box-shadow: 0 4px 20px rgba(74, 18, 89, 0.4);
+}
+
+/* Table borders */
+table,
+th,
+td {
+  border-color: var(--deep-purple) !important;
+}
+
+/* List item borders */
+.list-item-bordered {
+  border-bottom: 1px solid var(--deep-purple) !important;
+}
+
+/* Accordion borders */
+.accordion-item {
+  border: 1px solid var(--deep-purple) !important;
+}
+
+.accordion-item.active {
+  border-color: var(--deep-purple-hover) !important;
+}

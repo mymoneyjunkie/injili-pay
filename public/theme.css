@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Main brand colors from the image */
+  --color-purple: rgba(137, 38, 167, 0.7);  /* Keep for text and accents */
+  --color-cyan: rgba(16, 205, 219, 0.9);    /* Keep for buttons */
+  --color-silver: rgba(192, 192, 192, 0.9);  /* Keep for text */
+  --color-gold: #d4af37;    /* Keep gold solid */
+
+  /* Background colors */
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #0a0a0a;
+  
+  /* Text colors */
+  --color-text-primary: var(--color-silver);
+  --color-text-secondary: var(--color-purple);
+  --color-text-accent: var(--color-cyan);
+}
+
+/* Override all emerald colors with our new theme */
+[class*="text-emerald"] {
+  color: var(--color-purple) !important;
+  opacity: 0.9;
+}
+
+/* Override backgrounds to be simple black */
+[class*="bg-emerald"] {
+  background-color: #0a0a0a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Gradient backgrounds */
+[class*="bg-gradient"][class*="emerald"] {
+  background-color: #141414 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hover states */
+[class*="hover:text-emerald"]:hover {
+  color: var(--color-cyan) !important;
+}
+
+[class*="hover:bg-emerald"]:hover {
+  background-color: var(--color-cyan) !important;
+}
+
+/* Border colors */
+[class*="border-emerald"] {
+  border-color: var(--color-purple) !important;
+}
+
+/* Special elements */
+.logo-text {
+  color: var(--color-gold) !important;
+}
+
+/* Africa symbol specific styling */
+.africa-symbol {
+  color: var(--color-gold) !important;
+  fill: var(--color-gold) !important;
+}
+
+/* Button styling - keep the cyan gradient */
+button[class*="bg-emerald"],
+a[class*="bg-emerald"] {
+  background: linear-gradient(135deg, 
+    rgba(16, 205, 219, 0.9), 
+    rgba(0, 206, 209, 0.9)
+  ) !important;
+  color: white !important;
+  transition: all 0.3s ease;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 206, 209, 0.2);
+}
+
+button[class*="bg-emerald"]:hover,
+a[class*="bg-emerald"]:hover {
+  background: linear-gradient(135deg, 
+    rgba(0, 206, 209, 0.95), 
+    rgba(16, 205, 219, 0.95)
+  ) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(0, 206, 209, 0.3);
+}
+
+/* Override any other button styles */
+[class*="bg-emerald"]:not([class*="emerald-900"]):not([class*="emerald-700"]):not(.bg-emerald-700\/20) {
+  background: linear-gradient(135deg, var(--color-cyan), #00CED1) !important;
+}
+
+[class*="hover:bg-emerald"]:hover:not([class*="emerald-700"]):not([class*="emerald-900"]) {
+  background: linear-gradient(135deg, #00CED1, var(--color-cyan)) !important;
+}
+
+/* Card styling */
+.card {
+  background-color: #0a0a0a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Navigation styling */
+nav {
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Footer styling */
+footer {
+  background-color: var(--color-bg-secondary);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Status indicators */
+.status-badge {
+  background-color: var(--color-purple);
+  color: white;
+}
+
+.status-badge.active {
+  background-color: var(--color-cyan);
+}
+
+/* Form elements */
+input:focus, 
+select:focus, 
+textarea:focus {
+  border-color: var(--color-purple) !important;
+  box-shadow: 0 0 0 2px rgba(153, 50, 204, 0.2) !important;
+}
+
+/* Links */
+a {
+  color: var(--color-cyan);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-purple);
+}
+
+/* Icons */
+svg[class*="text-emerald"] {
+  color: var(--color-purple) !important;
+}
+
+svg[class*="text-emerald"]:hover {
+  color: var(--color-cyan) !important;
+} 
